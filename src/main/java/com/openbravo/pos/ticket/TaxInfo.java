@@ -205,9 +205,11 @@ public class TaxInfo implements Serializable, IKeyed {
     public void setOrder(Integer value) {
         order = value;
     }
-    
+
     @Override
-    public String toString(){
-        return name;
+    public String toString() {
+        return "TaxInfo{" + "id=" + id + ", name=" + name + ", taxcategoryid=" + taxcategoryid + ", taxcustcategoryid=" + taxcustcategoryid + ", parentid=" + parentid + ", rate=" + rate + ", cascade=" + cascade + ", order=" + order + '}';
     }
+    
+    
 }

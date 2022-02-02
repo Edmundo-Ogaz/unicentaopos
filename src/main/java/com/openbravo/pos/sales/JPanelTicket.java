@@ -570,7 +570,7 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
   }
 
   private void refreshTicket() {
-
+    log.debug("JPanelTicket refreshTicket");
     CardLayout cl = (CardLayout) (getLayout());
 
     if (m_oTicket == null) {
@@ -673,12 +673,16 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
   }
 
   private void printPartialTotals() {
-
+    log.debug("JPanelTicket printPartialTotals");
     if (m_oTicket.getLinesCount() == 0) {
       m_jSubtotalEuros.setText(null);
       m_jTaxesEuros.setText(null);
       m_jTotalEuros.setText(null);
     } else {
+      log.debug("JPanelTicket printPartialTotals SubTotal {} Tax {} Total {}", 
+              m_oTicket.printSubTotal(), 
+              m_oTicket.printTax(),
+              m_oTicket.printTotal());
       m_jSubtotalEuros.setText(m_oTicket.printSubTotal());
       m_jTaxesEuros.setText(m_oTicket.printTax());
       m_jTotalEuros.setText(m_oTicket.printTotal());
@@ -687,6 +691,7 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
   }
 
   private void paintTicketLine(int index, TicketLineInfo oLine) {
+    log.debug("JPanelTicket paintTicketLine index {} {}", index, oLine);
     if (executeEventAndRefresh("ticket.setline",
             new ScriptArg("index", index), new ScriptArg("line", oLine)) == null) {
 
@@ -706,7 +711,7 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
   }
 
   private void addTicketLine(ProductInfoExt oProduct, double dMul, double dPrice) {
-
+    log.debug("JPanelTicket addTicketLine {} dMul {} dPrice {}", oProduct, dMul, dPrice);
 //        if (oProduct.isVprice() || oProduct.getID().equals("xxx999_999xxx_x9x9x9")){
     if (oProduct.isVprice()) {
       TaxInfo tax = taxeslogic.getTaxInfo(oProduct.getTaxCategoryID(), m_oTicket.getCustomer());
@@ -758,6 +763,7 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
    * @param oLine
    */
   protected void addTicketLine(TicketLineInfo oLine) {
+    log.debug("JPanelTicket addTicketLine {}", oLine);
     if (executeEventAndRefresh("ticket.addline", new ScriptArg("line", oLine)) == null) {
       if (oLine.isProductCom()) {
         int i = m_ticketlines.getSelectedIndex();
@@ -814,7 +820,7 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
   }
 
   private void removeTicketLine(int i) {
-
+    log.debug("JPanelTicket removeTicketLine");
 //        if (m_App.getProperties().getProperty("override.check").equals("true")) {
     if (!m_oTicket.getLine(i).getUpdated()) {
       JOptionPane.showMessageDialog(this

@@ -183,6 +183,7 @@ public class PreparedSentence extends JDBCSentence {
  
             if (m_SerWrite != null) {
                 // si m_SerWrite fuera null deberiamos cascar.
+                //log.debug("Executing prepared parameters: {}", params);
                 PreparedSentencePars preparedSentencePars = new PreparedSentencePars(m_Stmt);
                 m_SerWrite.writeValues(preparedSentencePars, params);
             }

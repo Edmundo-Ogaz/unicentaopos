@@ -480,5 +480,16 @@ public class TicketLineInfo implements SerializableWrite, SerializableRead, Seri
     public void setUpdated(Boolean value) {
         updated = value;
     }
+
+    @Override
+    public String toString() {
+        return "TicketLineInfo{" + "m_sTicket=" + m_sTicket + ", m_iLine=" + m_iLine + ", multiply=" + multiply + ", price=" + price + ", tax=" + tax + ", productid=" + productid + ", attsetinstid=" + attsetinstid + ", updated=" + updated + ", newprice=" + newprice + '}';
+    }
+
+    
+    
+    
+    
+    
    
 }

@@ -379,6 +379,6 @@ public class ProductInfoExt {
 
     @Override
     public final String toString() {
-        return m_sRef + " - " + m_sName;
+        return "ProductInfoExt{" + "m_sRef=" + m_sRef + ",  m_sName=" + m_sName + ", m_ID=" + m_ID + ", m_bVprice=" + m_bVprice + ", taxcategoryid=" + taxcategoryid + ", m_bCom=" + m_bCom;
     }
 }
